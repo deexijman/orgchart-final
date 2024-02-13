@@ -62,7 +62,7 @@ app.get('/api/getallusers', async (req, res) => {
     }
 });
 
-// POST - get hierarchy 
+// POST - get hierarchy for chart
 app.post('/api/getorgchart', async (req, res) => {
     try {
         const bodyParameters = {
