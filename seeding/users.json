@@ -1,0 +1,170 @@
+[
+  {
+    "name": "anushnewman",
+    "email": "anushnewman@jmangroup.com",
+    "password": "0101",
+    "role": "CEO",
+    "department": null,
+    "reportsTo": null
+  },
+  {
+    "name": "ashley",
+    "email": "ashley@jmangroup.com",
+    "password": "0101",
+    "role": "CFO",
+    "department": null,
+    "reportsTo": "anushnewman@jmangroup.com"
+  },
+  {
+    "name": "gerald",
+    "email": "gerald@jmangroup.com",
+    "password": "0000",
+    "role": "MANAGER",
+    "department": "BM",
+    "reportsTo": "ashley@jmangroup.com"
+  },
+  {
+    "name": "gautham",
+    "email": "gautham@jmangroup.com",
+    "password": "0000",
+    "role": "SRHR",
+    "department": "BM",
+    "reportsTo": "gerald@jmangroup.com"
+  },
+  {
+    "name": "vishnupriya",
+    "email": "vishnupriya@jmangroup.com",
+    "password": "0000",
+    "role": "SRHR",
+    "department": "BM",
+    "reportsTo": "gerald@jmangroup.com"
+  },
+  {
+    "name": "amrut",
+    "email": "amrut@jmangroup.com",
+    "password": "0000",
+    "role": "JRHR",
+    "department": "BM",
+    "reportsTo": "gautham@jmangroup.com"
+  },
+  {
+    "name": "sirisha",
+    "email": "sirisha@jmangroup.com",
+    "password": "0000",
+    "role": "SRHR",
+    "department": "FSR",
+    "reportsTo": "ashley@jmangroup.com"
+  },
+  {
+    "name": "jeffy",
+    "email": "jeffy@jmangroup.com",
+    "password": "0000",
+    "role": "JRHR",
+    "department": "FSR",
+    "reportsTo": "sirisha@jmangroup.com"
+  },
+  {
+    "name": "leovalan",
+    "email": "leovalan@jmangroup.com",
+    "password": "0101",
+    "role": "CTO",
+    "department": null,
+    "reportsTo": "anushnewman@jmangroup.com"
+  },
+  {
+    "name": "vendeeshwaran",
+    "email": "vendeeshwaran@jmangroup.com",
+    "password": "0000",
+    "role": "TM",
+    "department": "FS",
+    "reportsTo": "leovalan@jmangroup.com"
+  },
+  {
+    "name": "sachinvias",
+    "email": "sachinvias@jmangroup.com",
+    "password": "0000",
+    "role": "TM",
+    "department": "DE",
+    "reportsTo": "leovalan@jmangroup.com"
+  },
+  {
+    "name": "sivamalini",
+    "email": "sivamalini@jmangroup.com",
+    "password": "0000",
+    "role": "TM",
+    "department": "UI",
+    "reportsTo": "leovalan@jmangroup.com"
+  },
+  {
+    "name": "gopinathramesh",
+    "email": "gopinathramesh@jmangroup.com",
+    "password": "0000",
+    "role": "TL",
+    "department": "FS",
+    "reportsTo": "vendeeshwaran@jmangroup.com"
+  },
+  {
+    "name": "deexith",
+    "email": "deexith@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "FS",
+    "reportsTo": "gopinathramesh@jmangroup.com"
+  },
+  {
+    "name": "hafeel",
+    "email": "hafeel@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "FS",
+    "reportsTo": "gopinathramesh@jmangroup.com"
+  },
+  {
+    "name": "nivya",
+    "email": "nivya@jmangroup.com",
+    "password": "0000",
+    "role": "TL",
+    "department": "DE",
+    "reportsTo": "sachinvias@jmangroup.com"
+  },
+  {
+    "name": "parthiban",
+    "email": "parthiban@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "DE",
+    "reportsTo": "nivya@jmangroup.com"
+  },
+  {
+    "name": "rajibparbat",
+    "email": "rajibparbat@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "DE",
+    "reportsTo": "nivya@jmangroup.com"
+  },
+  {
+    "name": "dhanasekar",
+    "email": "dhanasekar@jmangroup.com",
+    "password": "0000",
+    "role": "TL",
+    "department": "UI",
+    "reportsTo": "sivamalini@jmangroup.com"
+  },
+  {
+    "name": "mithun",
+    "email": "mithun@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "UI",
+    "reportsTo": "dhanasekar@jmangroup.com"
+  },
+  {
+    "name": "saathvik",
+    "email": "saathvik@jmangroup.com",
+    "password": "0000",
+    "role": "DE",
+    "department": "UI",
+    "reportsTo": "dhanasekar@jmangroup.com"
+  }
+]
