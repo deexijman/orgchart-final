@@ -20,47 +20,47 @@
     "email": "gerald@jmangroup.com",
     "password": "0000",
     "role": "MANAGER",
-    "department": "BM",
+    "department": "BUSINESS_MANAGEMENT",
     "reportsTo": "ashley@jmangroup.com"
   },
   {
     "name": "gautham",
     "email": "gautham@jmangroup.com",
     "password": "0000",
-    "role": "SRHR",
-    "department": "BM",
+    "role": "SENIOR_HR",
+    "department": "BUSINESS_MANAGEMENT",
     "reportsTo": "gerald@jmangroup.com"
   },
   {
     "name": "vishnupriya",
     "email": "vishnupriya@jmangroup.com",
     "password": "0000",
-    "role": "SRHR",
-    "department": "BM",
+    "role": "SENIOR_HR",
+    "department": "BUSINESS_MANAGEMENT",
     "reportsTo": "gerald@jmangroup.com"
   },
   {
     "name": "amrut",
     "email": "amrut@jmangroup.com",
     "password": "0000",
-    "role": "JRHR",
-    "department": "BM",
+    "role": "JUNIOR_HR",
+    "department": "BUSINESS_MANAGEMENT",
     "reportsTo": "gautham@jmangroup.com"
   },
   {
     "name": "sirisha",
     "email": "sirisha@jmangroup.com",
     "password": "0000",
-    "role": "SRHR",
-    "department": "FSR",
+    "role": "SENIOR_HR",
+    "department": "FINANCIAL_SERVICES",
     "reportsTo": "ashley@jmangroup.com"
   },
   {
     "name": "jeffy",
     "email": "jeffy@jmangroup.com",
     "password": "0000",
-    "role": "JRHR",
-    "department": "FSR",
+    "role": "JUNIOR_HR",
+    "department": "FINANCIAL_SERVICES",
     "reportsTo": "sirisha@jmangroup.com"
   },
   {
@@ -75,23 +75,23 @@
     "name": "vendeeshwaran",
     "email": "vendeeshwaran@jmangroup.com",
     "password": "0000",
-    "role": "TM",
-    "department": "FS",
+    "role": "TRIBE_MASTER",
+    "department": "FULL_STACK",
     "reportsTo": "leovalan@jmangroup.com"
   },
   {
     "name": "sachinvias",
     "email": "sachinvias@jmangroup.com",
     "password": "0000",
-    "role": "TM",
-    "department": "DE",
+    "role": "TRIBE_MASTER",
+    "department": "DATA_ENGINEER",
     "reportsTo": "leovalan@jmangroup.com"
   },
   {
     "name": "sivamalini",
     "email": "sivamalini@jmangroup.com",
     "password": "0000",
-    "role": "TM",
+    "role": "TRIBE_MASTER",
     "department": "UI",
     "reportsTo": "leovalan@jmangroup.com"
   },
@@ -99,55 +99,55 @@
     "name": "gopinathramesh",
     "email": "gopinathramesh@jmangroup.com",
     "password": "0000",
-    "role": "TL",
-    "department": "FS",
+    "role": "TEAM_LEAD",
+    "department": "FULL_STACK",
     "reportsTo": "vendeeshwaran@jmangroup.com"
   },
   {
     "name": "deexith",
     "email": "deexith@jmangroup.com",
     "password": "0000",
-    "role": "DE",
-    "department": "FS",
+    "role": "DEVELOPER",
+    "department": "FULL_STACK",
     "reportsTo": "gopinathramesh@jmangroup.com"
   },
   {
     "name": "hafeel",
     "email": "hafeel@jmangroup.com",
     "password": "0000",
-    "role": "DE",
-    "department": "FS",
+    "role": "DEVELOPER",
+    "department": "FULL_STACK",
     "reportsTo": "gopinathramesh@jmangroup.com"
   },
   {
     "name": "nivya",
     "email": "nivya@jmangroup.com",
     "password": "0000",
-    "role": "TL",
-    "department": "DE",
+    "role": "TEAM_LEAD",
+    "department": "DATA_ENGINEER",
     "reportsTo": "sachinvias@jmangroup.com"
   },
   {
     "name": "parthiban",
     "email": "parthiban@jmangroup.com",
     "password": "0000",
-    "role": "DE",
-    "department": "DE",
+    "role": "DEVELOPER",
+    "department": "DATA_ENGINEER",
     "reportsTo": "nivya@jmangroup.com"
   },
   {
     "name": "rajibparbat",
     "email": "rajibparbat@jmangroup.com",
     "password": "0000",
-    "role": "DE",
-    "department": "DE",
+    "role": "DEVELOPER",
+    "department": "DATA_ENGINEER",
     "reportsTo": "nivya@jmangroup.com"
   },
   {
     "name": "dhanasekar",
     "email": "dhanasekar@jmangroup.com",
     "password": "0000",
-    "role": "TL",
+    "role": "TEAM_LEAD",
     "department": "UI",
     "reportsTo": "sivamalini@jmangroup.com"
   },
@@ -155,7 +155,7 @@
     "name": "mithun",
     "email": "mithun@jmangroup.com",
     "password": "0000",
-    "role": "DE",
+    "role": "DEVELOPER",
     "department": "UI",
     "reportsTo": "dhanasekar@jmangroup.com"
   },
@@ -163,7 +163,7 @@
     "name": "saathvik",
     "email": "saathvik@jmangroup.com",
     "password": "0000",
-    "role": "DE",
+    "role": "DEVELOPER",
     "department": "UI",
     "reportsTo": "dhanasekar@jmangroup.com"
   }
