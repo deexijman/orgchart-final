@@ -1,9 +1,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import { MongoClient } from 'mongodb'
+
 import User from './models/Users.js'
 import mongoose from 'mongoose'
+import Admin from './models/Admin.js'
+import bcrypt from "bcrypt"
 
 const app = express()
 
@@ -39,23 +41,23 @@ const DEPARTMENTS = {
 // GET - get all users - TEST ROUTE
 app.get('/api/getallusers', async (req, res) => {
     try {
-        const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
+       
+        
 
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
+        const allUsers = await User.find({}); // Find all documents
 
-        const cursor = collection.find({}); // Find all documents
+        
 
-        const documents = await cursor.toArray(); // Convert cursor to array
+        // allUsers.forEach(doc => {
+        //     console.log('here', doc); // Log each document
+        // });
 
-        documents.forEach(doc => {
-            console.log('here', doc); // Log each document
+       
+
+        res.status(200).json({
+            message : 'sending all user datas',
+            data : allUsers
         });
-
-        client.close(); // Close the connection
-
-        res.status(200).send('Documents logged successfully');
     } catch (error) {
         console.error('Error retrieving documents:', error);
         res.status(500).send('Internal Server Error');
@@ -72,13 +74,9 @@ app.post('/api/getorgchart', async (req, res) => {
             reportsTo: req.body.reportsTo
         };
 
-        console.log("check",bodyParameters)
+       // console.log("check",bodyParameters)
 
-        const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
-
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
+       
 
         const hierarchyArr = [];
         let nextReportsTo = bodyParameters.reportsTo;
@@ -91,13 +89,13 @@ app.post('/api/getorgchart', async (req, res) => {
             var cursor;
 
             if(firstEntry===true) {
-                cursor = collection.find({ reportsTo: nextReportsTo, email: currentEmailHolder });
+                cursor = await User.find({ reportsTo: nextReportsTo, email: currentEmailHolder });
                 firstEntry=false
             } else {
-                cursor = collection.find({ email: nextReportsTo });
+                cursor = await User.find({ email: nextReportsTo });
             }
             
-            const documents = await cursor.toArray();
+            const documents = cursor;
 
               if (documents.length > 0) {
                 console.log("entry true")
@@ -115,12 +113,13 @@ app.post('/api/getorgchart', async (req, res) => {
 
         } while (nextReportsTo !== null);
 
-        client.close();
+       
 
-        resultantHierarchy = hierarchyArr.reverse();
-        console.log("Final array",hierarchyArr)
-
-        res.status(200).json({ hierarchy: resultantHierarchy });
+       //resultantHierarchy = hierarchyArr.reverse();
+        
+       // console.log("Final array",hierarchyArr)
+        
+        res.status(200).json({ hierarchyArr });
     } catch (error) {
         console.error('Error retrieving hierarchy:', error);
         res.status(500).send('Internal Server Error');
@@ -174,7 +173,7 @@ app.get('/api/listseniornames', async (req, res) =>{
         
         var SENIOR_ROLE;
 
-        let SENIOR_EMAILS = []
+        
 
         // GET THE IMMEDIATE SENIOR ROLE
         if(HIERARCHY.PR.includes(ROLE)){
@@ -187,22 +186,8 @@ app.get('/api/listseniornames', async (req, res) =>{
 
         console.log(SENIOR_ROLE,"LOG")
 
-        const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
 
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
-
-        const cursor = collection.find({role:SENIOR_ROLE, department:DEPARTMENT}); // Find all documents
-
-        const documents = await cursor.toArray(); // Convert cursor to array
-
-        documents.forEach(doc => {
-            SENIOR_EMAILS.push(doc.email)
-            console.log('doc log',doc)
-        });
-
-        client.close(); // Close the connection
+        const SENIOR_EMAILS = await User.find({role:SENIOR_ROLE, department:DEPARTMENT}); // Find all documents
 
         res.status(200).send({
             message : "senior email arrays",
@@ -242,6 +227,99 @@ app.post('/api/adduser', async (req, res) =>{
         res.status(500).json({ error: 'Internal server error' });
     }
 
+})
+
+
+
+
+// user / admin 
+ // /api/login?ROLE=USER&USERNAME=VIKAS&&PASSWORD ("ADMIN") -> LOGGING IN
+app.post('/api/login' , async(req,res) =>{
+    try{
+        const ROLE = req.query.ROLE
+        const EMAIL = req.query.EMAIL
+        const PASSWORD = req.query.PASSWORD
+        console.log(ROLE)
+        if(ROLE === "USER"){
+            //FIND IF USER IS THERE
+            const user = await User.findOne({email:EMAIL})
+            !user && res.status(400).json("Wrong credentials!");
+            console.log(user)
+            //IF USER IS THERE CHECK IF PASSWORD IS CORRECT
+          //const isvalidated = await bcrypt.compare(PASSWORD,user.password)
+        //   !isvalidated && res.status(400).json("Wrong credentials!");
+
+          const {name , email} = user
+
+          res.status(200).json({
+            name:name,
+            email:email
+          })
+
+
+        }
+
+        else if (ROLE === "ADMIN"){
+           
+                //FIND IF admin IS THERE
+                const admin = await Admin.findOne({email:EMAIL})
+                console.log(admin)
+                !admin && res.status(400).json("Wrong credentials!");
+                //IF admin IS THERE CHECK IF PASSWORD IS CORRECT
+              const isvalidated = await bcrypt.compare(PASSWORD,admin.password)
+              !isvalidated && res.status(400).json("Wrong credentials!");
+    
+              const {name , email} = admin
+    
+              res.status(200).json({
+                name:name,
+                email:email
+              })
+        }
+
+        else{
+            res.status(400).json({
+                message:'role not available'
+            })
+        }
+    }
+    catch(e){
+        res.status(500).json({
+            'message' : 'role has to be either user or admin'
+        })
+    }
+})
+
+// register user / admin  -> /api/register/ROLE=USER ("ADMIN")
+app.post('/api/register',async(req,res) =>{
+
+   
+        const ROLE = req.query.ROLE
+       console.log(ROLE)
+
+        if(ROLE == 'ADMIN'){
+            try {
+                console.log("hello")
+                const salt = await bcrypt.genSalt(10);
+                const hashedPass = await bcrypt.hash(req.body.password, salt);
+               
+
+             const emaill = req.body.email
+             console.log(emaill,req.body.name,hashedPass)
+                const admin =  {
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hashedPass,
+                  }
+                  await Admin.create(admin)
+                  console.log(admin)
+                res.status(200).json({email:emaill});
+              } catch (err) {
+                res.status(500).json({
+                    'message' : 'FAILED TO CREATE A USER'
+                });
+              }
+        }
 })
 
 app.listen(PORT, () => {
